@@ -17,6 +17,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Page View Visibility */
+.page-view {
+  display: none !important;
+}
+
+.page-view.active {
+  display: flex !important;
+}
+
 /* --- Main Layout --- */
 .dashboard-container {
   display: flex;
@@ -147,7 +156,7 @@ body {
 }
 
 .nav-item.logout {
-    background-color: #eceef2;
+  background-color: #eceef2;
   margin-top: auto;
 }
 .nav-item.logout:hover {
@@ -215,8 +224,8 @@ body {
 }
 
 .sidebar-toggle-btn:hover {
-    background-color: #0b1a3e;
-  color: #ffffff;;
+  background-color: #0b1a3e;
+  color: #ffffff;
 }
 
 .sidebar-toggle-btn svg {
@@ -258,12 +267,6 @@ body {
 
 .user-id {
   font-size: 12px;
-  color: #526071;
-}
-
-.dropdown-icon {
-  width: 16px;
-  height: 16px;
   color: #526071;
 }
 
@@ -315,6 +318,10 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.alert-icon-wrap.dark {
+  background-color: #0b1a3e;
 }
 
 .exclamation-mark {
@@ -405,10 +412,6 @@ body {
 
 .icon-green {
   color: #10b981;
-}
-
-.icon-blue {
-  color: #3b82f6;
 }
 
 /* Application Status Card */
@@ -622,6 +625,263 @@ body {
   line-height: 1.45;
 }
 
+/* ==========================================================================
+   ACCOMMODATION APPLICATION VIEW STYLES
+   ========================================================================== */
+
+/* Stepper Card */
+.stepper-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 36px;
+}
+
+.stepper-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stepper-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.stepper-step.active .stepper-badge {
+  background-color: #0b1a3e;
+  color: #ffffff;
+}
+
+.stepper-step.active .stepper-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0a111f;
+}
+
+.stepper-step.disabled .stepper-badge {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  border: 1px solid #cbd5e1;
+}
+
+.stepper-step.disabled .stepper-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.stepper-line {
+  flex: 1;
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 0 24px;
+}
+
+/* Instructions Banner Card */
+.instructions-banner-card {
+  background-color: #f0f5ff;
+  border: 1px solid #e0e8f9;
+  padding: 28px 32px;
+}
+
+.banner-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.banner-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a111f;
+  margin-bottom: 4px;
+}
+
+.banner-subtext {
+  font-size: 13.5px;
+  color: #526071;
+}
+
+.instruction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-left: 48px;
+  margin-bottom: 32px;
+}
+
+.instruction-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.check-icon {
+  width: 18px;
+  height: 18px;
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+.instructions-footer {
+  border-top: 1px solid #cbd5e1;
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e1;
+  background-color: #ffffff;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-container input:checked + .custom-checkbox {
+  background-color: #0b1a3e;
+  border-color: #0b1a3e;
+}
+
+.checkbox-container input:checked + .custom-checkbox::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-text {
+  font-size: 13.5px;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.btn-proceed {
+  gap: 8px;
+  padding: 10px 24px;
+}
+
+.btn-proceed svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Status Bar Info Card */
+.application-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+}
+
+.status-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.status-calendar-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: #f0f5ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.status-calendar-box svg {
+  width: 22px;
+  height: 22px;
+}
+
+.status-bar-text h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0a111f;
+  margin-bottom: 8px;
+}
+
+.status-dates {
+  display: flex;
+  gap: 40px;
+}
+
+.date-lbl {
+  display: block;
+  font-size: 11px;
+  color: #8896a6;
+  margin-bottom: 2px;
+}
+
+.date-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0a111f;
+}
+
+.status-bar-right {
+  background-color: #f0f5ff;
+  border-radius: 10px;
+  padding: 14px 28px;
+  text-align: center;
+}
+
+.time-rem-label {
+  font-size: 11px;
+  color: #526071;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.time-rem-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0b1a3e;
+}
+
+.time-rem-sub {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 10px;
+  color: #8896a6;
+  margin-top: 2px;
+}
+
 /* Mobile Drawer Overlay Backdrop */
 .sidebar-overlay {
   display: none;
@@ -645,6 +905,16 @@ body {
 @media (max-width: 1024px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
+  }
+
+  .application-status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .status-bar-right {
+    width: 100%;
   }
 }
 
@@ -684,5 +954,31 @@ body {
 
   .btn-apply {
     width: 100%;
+  }
+
+  .instruction-list {
+    margin-left: 0;
+  }
+
+  .instructions-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .btn-proceed {
+    width: 100%;
+  }
+
+  .stepper-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .stepper-line {
+    width: 100%;
+    height: 1px;
+    margin: 4px 0;
   }
 }

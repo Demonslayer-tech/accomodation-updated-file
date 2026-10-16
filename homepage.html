@@ -316,26 +316,26 @@
           <p>Follow the steps below to apply for accommodation, Please read the instructions carefully before proceeding.</p>
         </div>
 
-        <!-- Stepper -->
+        <!-- Dynamic Stepper Navigation -->
         <div class="card stepper-card">
-          <div class="stepper-step active">
+          <div class="stepper-step active" id="stepNode1">
             <span class="stepper-badge">1</span>
             <span class="stepper-label">Instructions</span>
           </div>
           <div class="stepper-line"></div>
-          <div class="stepper-step disabled">
+          <div class="stepper-step disabled" id="stepNode2">
             <span class="stepper-badge">2</span>
             <span class="stepper-label">Room Allocation</span>
           </div>
           <div class="stepper-line"></div>
-          <div class="stepper-step disabled">
+          <div class="stepper-step disabled" id="stepNode3">
             <span class="stepper-badge">3</span>
             <span class="stepper-label">Payment & Confirmation</span>
           </div>
         </div>
 
-        <!-- Instructions Blue Banner Card -->
-        <div class="card instructions-banner-card">
+        <!-- STEP 1: INSTRUCTIONS SECTION -->
+        <div class="card instructions-banner-card app-step-content active" id="appStep1">
           <div class="banner-header">
             <div class="alert-icon-wrap dark">
               <span class="exclamation-mark">!</span>
@@ -391,7 +391,7 @@
               <span class="checkbox-text">I have read and understood the information above.</span>
             </label>
 
-            <button class="btn btn-primary btn-proceed">
+            <button class="btn btn-primary btn-proceed" id="btnToStep2">
               <span>Proceed</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"></polyline>
@@ -400,8 +400,135 @@
           </div>
         </div>
 
-        <!-- Application Window Info Footer Banner -->
-        <div class="card application-status-bar">
+        <!-- STEP 2: ROOM ALLOCATION CONGRATULATIONS CARD -->
+        <div class="card allocation-card app-step-content" id="appStep2">
+          <div class="success-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+
+          <h3 class="allocation-title">Congratulations, Tola!</h3>
+          <p class="allocation-subtitle">You have been allocated a room.</p>
+
+          <div class="allocation-grid">
+            <div class="allocation-box">
+              <div class="box-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                  <line x1="9" y1="6" x2="9.01" y2="6"></line>
+                  <line x1="15" y1="6" x2="15.01" y2="6"></line>
+                  <line x1="9" y1="10" x2="9.01" y2="10"></line>
+                  <line x1="15" y1="10" x2="15.01" y2="10"></line>
+                  <line x1="9" y1="14" x2="9.01" y2="14"></line>
+                  <line x1="15" y1="14" x2="15.01" y2="14"></line>
+                  <line x1="9" y1="18" x2="15" y2="18"></line>
+                </svg>
+              </div>
+              <h4 class="box-heading">Block 2</h4>
+              <span class="box-sub">Your assigned block</span>
+            </div>
+
+            <div class="allocation-box">
+              <div class="box-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 6 12 13 2 6"></polyline>
+                  <path d="M22 10l-10 7L2 10"></path>
+                  <path d="M22 14l-10 7L2 14"></path>
+                </svg>
+              </div>
+              <h4 class="box-heading">2nd Floor</h4>
+              <span class="box-sub">Your assigned floor</span>
+            </div>
+
+            <div class="allocation-box">
+              <div class="box-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 4v16"></path>
+                  <path d="M2 8h18a2 2 0 0 1 2 2v10"></path>
+                  <path d="M2 17h20"></path>
+                  <circle cx="6" cy="11" r="2"></circle>
+                </svg>
+              </div>
+              <h4 class="box-heading">Small room</h4>
+              <span class="box-sub">4-bedded</span>
+            </div>
+          </div>
+
+          <p class="allocation-disclaimer">
+            Your room was assigned randomly by the system and can’t be changed. Proceed to payment to confirm your allocation
+          </p>
+
+          <button class="btn btn-primary btn-proceed-payment" id="btnToStep3">
+            <span>Proceed to Payment</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- STEP 3: PAYMENT SUCCESS & CONFIRMATION ALLOCATION SLIP -->
+        <div class="card payment-success-card app-step-content" id="appStep3">
+          <div class="success-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+
+          <h3 class="allocation-title">Payment successful</h3>
+          <p class="allocation-subtitle">Your room has been secured.</p>
+
+          <!-- Receipt Slip Card -->
+          <div class="receipt-slip">
+            <div class="receipt-header">
+              <span class="slip-title">Allocation slip</span>
+              <span class="badge-paid">Paid</span>
+            </div>
+
+            <div class="receipt-divider"></div>
+
+            <div class="receipt-rows">
+              <div class="receipt-row">
+                <span class="row-label">Student</span>
+                <span class="row-value">Tola Ade</span>
+              </div>
+              <div class="receipt-row">
+                <span class="row-label">Matric Number</span>
+                <span class="row-value">240101113</span>
+              </div>
+              <div class="receipt-row">
+                <span class="row-label">Block</span>
+                <span class="row-value">Block 2</span>
+              </div>
+              <div class="receipt-row">
+                <span class="row-label">Floor</span>
+                <span class="row-value">2nd Floor</span>
+              </div>
+              <div class="receipt-row">
+                <span class="row-label">Room type</span>
+                <span class="row-value">Small room (4-bedded)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="receipt-actions">
+            <button class="btn btn-primary btn-print" onclick="window.print()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>Print allocation slip</span>
+            </button>
+
+            <button class="btn btn-secondary btn-back-dash" id="btnBackToDashboard">
+              <span>Back to dashboard</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Shared Bottom Application Window Info Card -->
+        <div class="card application-status-bar" id="appStatusBar">
           <div class="status-bar-left">
             <div class="status-calendar-box">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -454,6 +581,20 @@
       const viewApplication = document.getElementById('viewApplication');
       const triggerAppBtns = document.querySelectorAll('.trigger-app-view');
 
+      // Application Steps Controls
+      const stepNode1 = document.getElementById('stepNode1');
+      const stepNode2 = document.getElementById('stepNode2');
+      const stepNode3 = document.getElementById('stepNode3');
+
+      const appStep1 = document.getElementById('appStep1');
+      const appStep2 = document.getElementById('appStep2');
+      const appStep3 = document.getElementById('appStep3');
+      const appStatusBar = document.getElementById('appStatusBar');
+
+      const btnToStep2 = document.getElementById('btnToStep2');
+      const btnToStep3 = document.getElementById('btnToStep3');
+      const btnBackToDashboard = document.getElementById('btnBackToDashboard');
+
       // Toggle Sidebar
       sidebarToggleBtn.addEventListener('click', function () {
         if (window.innerWidth <= 768) {
@@ -469,7 +610,7 @@
         sidebarOverlay.classList.remove('active');
       });
 
-      // View Switcher logic
+      // Navigation View Switcher logic
       function switchToDashboard(e) {
         if(e) e.preventDefault();
         navApplication.classList.remove('active');
@@ -492,6 +633,32 @@
       triggerAppBtns.forEach(btn => {
         btn.addEventListener('click', switchToApplication);
       });
+
+      // Step 1 -> Step 2
+      btnToStep2.addEventListener('click', function () {
+        appStep1.classList.remove('active');
+        appStep2.classList.add('active');
+
+        stepNode1.classList.remove('active');
+        stepNode1.classList.add('completed');
+        stepNode2.classList.remove('disabled');
+        stepNode2.classList.add('active');
+      });
+
+      // Step 2 -> Step 3
+      btnToStep3.addEventListener('click', function () {
+        appStep2.classList.remove('active');
+        appStep3.classList.add('active');
+        appStatusBar.style.display = 'none'; // Hide application open info bar on step 3
+
+        stepNode2.classList.remove('active');
+        stepNode2.classList.add('completed');
+        stepNode3.classList.remove('disabled');
+        stepNode3.classList.add('active');
+      });
+
+      // Step 3 -> Back to Dashboard
+      btnBackToDashboard.addEventListener('click', switchToDashboard);
     });
   </script>
 </body>

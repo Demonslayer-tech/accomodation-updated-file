@@ -17,13 +17,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Page View Visibility */
+/* Page View & Application Step Visibility */
 .page-view {
   display: none !important;
 }
 
 .page-view.active {
   display: flex !important;
+}
+
+.app-step-content {
+  display: none !important;
+}
+
+.app-step-content.active {
+  display: block !important;
 }
 
 /* --- Main Layout --- */
@@ -159,6 +167,7 @@ body {
   background-color: #eceef2;
   margin-top: auto;
 }
+
 .nav-item.logout:hover {
   background-color: #0b1a3e;
   color: #ffffff;
@@ -363,6 +372,16 @@ body {
 
 .btn-primary:hover {
   background-color: #162a5b;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  border: 1px solid #0b1a3e;
+  color: #0b1a3e;
+}
+
+.btn-secondary:hover {
+  background-color: #f1f5f9;
 }
 
 .btn-full {
@@ -665,6 +684,18 @@ body {
   color: #0a111f;
 }
 
+.stepper-step.completed .stepper-badge {
+  background-color: #f1f5f9;
+  color: #0b1a3e;
+  border: 1px solid #cbd5e1;
+}
+
+.stepper-step.completed .stepper-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #526071;
+}
+
 .stepper-step.disabled .stepper-badge {
   background-color: #f1f5f9;
   color: #94a3b8;
@@ -797,6 +828,216 @@ body {
   height: 16px;
 }
 
+/* ==========================================================================
+   STEP 2: ROOM ALLOCATION CARD STYLES
+   ========================================================================== */
+.allocation-card {
+  background-color: #f0f5ff;
+  border: 1px solid #e0e8f9;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.success-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #d1fae5;
+  color: #059669;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.success-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
+
+.allocation-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0a111f;
+  margin-bottom: 4px;
+}
+
+.allocation-subtitle {
+  font-size: 14px;
+  color: #526071;
+  margin-bottom: 32px;
+}
+
+.allocation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 780px;
+  margin-bottom: 28px;
+}
+
+.allocation-box {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.box-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+  color: #0a111f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.box-heading {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0a111f;
+  margin-bottom: 4px;
+}
+
+.box-sub {
+  font-size: 12px;
+  color: #526071;
+}
+
+.allocation-disclaimer {
+  font-size: 13.5px;
+  color: #526071;
+  margin-bottom: 24px;
+  max-width: 650px;
+  line-height: 1.5;
+}
+
+.btn-proceed-payment {
+  gap: 8px;
+  padding: 12px 32px;
+  font-size: 14px;
+}
+
+.btn-proceed-payment svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ==========================================================================
+   STEP 3: PAYMENT SUCCESSFUL & CONFIRMATION SLIP STYLES
+   ========================================================================== */
+.payment-success-card {
+  background-color: #f0f5ff;
+  border: 1px solid #e0e8f9;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.receipt-slip {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 580px;
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.receipt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.slip-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.badge-paid {
+  background-color: #d1fae5;
+  color: #059669;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.receipt-divider {
+  border-top: 2px dashed #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.receipt-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.receipt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.receipt-row:last-child {
+  border-bottom: none;
+}
+
+.row-label {
+  font-size: 14px;
+  color: #526071;
+  font-weight: 500;
+}
+
+.row-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0a111f;
+}
+
+.receipt-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-print {
+  gap: 8px;
+  padding: 12px 28px;
+}
+
+.btn-print svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-back-dash {
+  padding: 12px 28px;
+}
+
 /* Status Bar Info Card */
 .application-status-bar {
   display: flex;
@@ -916,6 +1157,10 @@ body {
   .status-bar-right {
     width: 100%;
   }
+
+  .allocation-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -966,7 +1211,12 @@ body {
     gap: 16px;
   }
 
-  .btn-proceed {
+  .receipt-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-proceed, .btn-proceed-payment, .btn-print, .btn-back-dash {
     width: 100%;
   }
 

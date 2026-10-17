@@ -108,7 +108,6 @@
           <p>Manage your accommodation application and stay updated</p>
         </div>
 
-        <!-- Alert Banner -->
         <div class="alert-banner">
           <div class="alert-content">
             <div class="alert-icon-wrap">
@@ -122,11 +121,8 @@
           <button class="btn btn-primary btn-apply trigger-app-view">Apply Now</button>
         </div>
 
-        <!-- Main Dashboard Grid Layout -->
         <div class="dashboard-grid">
-          <!-- Left Column (Main Cards) -->
           <div class="grid-main-column">
-            <!-- Application Status Card -->
             <div class="card status-card">
               <div class="card-header">
                 <svg class="card-icon icon-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -153,7 +149,6 @@
               </div>
             </div>
 
-            <!-- Important Announcements Card -->
             <div class="card announcements-card">
               <div class="card-header">
                 <h3 class="card-title">Important Announcements</h3>
@@ -214,9 +209,7 @@
             </div>
           </div>
 
-          <!-- Right Side Column (Countdown & Steps) -->
           <div class="grid-side-column">
-            <!-- Countdown Card -->
             <div class="card countdown-card">
               <h3 class="countdown-heading">Application Window Closes In</h3>
               
@@ -250,7 +243,6 @@
               </div>
             </div>
 
-            <!-- How It Works Card -->
             <div class="card how-it-works-card">
               <div class="card-header">
                 <div class="how-it-works-icon-wrap">
@@ -316,7 +308,6 @@
           <p>Follow the steps below to apply for accommodation, Please read the instructions carefully before proceeding.</p>
         </div>
 
-        <!-- Dynamic Stepper Navigation -->
         <div class="card stepper-card">
           <div class="stepper-step active" id="stepNode1">
             <span class="stepper-badge">1</span>
@@ -391,7 +382,7 @@
               <span class="checkbox-text">I have read and understood the information above.</span>
             </label>
 
-            <button class="btn btn-primary btn-proceed" id="btnToStep2">
+            <button class="btn btn-primary btn-proceed" id="btnOpenHostelModal">
               <span>Proceed</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"></polyline>
@@ -425,7 +416,7 @@
                   <line x1="9" y1="18" x2="15" y2="18"></line>
                 </svg>
               </div>
-              <h4 class="box-heading">Block 2</h4>
+              <h4 class="box-heading" id="displayBlock">Block 2</h4>
               <span class="box-sub">Your assigned block</span>
             </div>
 
@@ -437,7 +428,7 @@
                   <path d="M22 14l-10 7L2 14"></path>
                 </svg>
               </div>
-              <h4 class="box-heading">2nd Floor</h4>
+              <h4 class="box-heading" id="displayFloor">2nd Floor</h4>
               <span class="box-sub">Your assigned floor</span>
             </div>
 
@@ -450,7 +441,7 @@
                   <circle cx="6" cy="11" r="2"></circle>
                 </svg>
               </div>
-              <h4 class="box-heading">Small room</h4>
+              <h4 class="box-heading" id="displayRoom">Small room</h4>
               <span class="box-sub">4-bedded</span>
             </div>
           </div>
@@ -478,7 +469,6 @@
           <h3 class="allocation-title">Payment successful</h3>
           <p class="allocation-subtitle">Your room has been secured.</p>
 
-          <!-- Receipt Slip Card -->
           <div class="receipt-slip">
             <div class="receipt-header">
               <span class="slip-title">Allocation slip</span>
@@ -498,15 +488,15 @@
               </div>
               <div class="receipt-row">
                 <span class="row-label">Block</span>
-                <span class="row-value">Block 2</span>
+                <span class="row-value" id="slipBlock">Block 2</span>
               </div>
               <div class="receipt-row">
                 <span class="row-label">Floor</span>
-                <span class="row-value">2nd Floor</span>
+                <span class="row-value" id="slipFloor">2nd Floor</span>
               </div>
               <div class="receipt-row">
                 <span class="row-label">Room type</span>
-                <span class="row-value">Small room (4-bedded)</span>
+                <span class="row-value" id="slipRoom">Small room (4-bedded)</span>
               </div>
             </div>
           </div>
@@ -568,7 +558,165 @@
     </div>
   </div>
 
-  <!-- JavaScript for Navigation & Retractable Sidebar Toggle -->
+  <!-- ================= HOSTEL OVERVIEW SELECTION POPUP MODAL ================= -->
+  <div class="modal-backdrop" id="hostelModalBackdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Hostel Overview</h3>
+        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      </div>
+
+      <!-- Blocks Nav Pills -->
+      <div class="block-tabs">
+        <button class="block-tab active" data-block="Block 1">Block 1</button>
+        <button class="block-tab" data-block="Block 2">Block 2</button>
+        <button class="block-tab" data-block="Block 3">Block 3</button>
+        <button class="block-tab" data-block="Block 4">Block 4</button>
+        <button class="block-tab" data-block="Block 5">Block 5</button>
+        <button class="block-tab" data-block="Block 6">Block 6</button>
+        <button class="block-tab" data-block="Block 7">Block 7</button>
+        <button class="block-tab" data-block="Block 8">Block 8</button>
+      </div>
+
+      <div class="floors-section-title">
+        <h4>Floors</h4>
+        <p>Select a floor to view room details and availability</p>
+      </div>
+
+      <!-- Floors List Items -->
+      <div class="floors-list">
+        <div class="floor-row" data-floor="1st Floor" data-room="Small room">
+          <div class="floor-left">
+            <div class="floor-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h5 class="floor-name">1st Floor</h5>
+              <span class="floor-avail">6 rooms available</span>
+            </div>
+          </div>
+
+          <div class="floor-mid">
+            <div>
+              <span class="room-type-title">Small Rooms</span>
+              <span class="room-type-avail">3 Available</span>
+            </div>
+            <div>
+              <span class="room-type-title">Large Rooms</span>
+              <span class="room-type-avail">3 Available</span>
+            </div>
+          </div>
+
+          <div class="floor-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="floor-row" data-floor="2nd Floor" data-room="Small room">
+          <div class="floor-left">
+            <div class="floor-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h5 class="floor-name">2nd Floor</h5>
+              <span class="floor-avail">12 rooms available</span>
+            </div>
+          </div>
+
+          <div class="floor-mid">
+            <div>
+              <span class="room-type-title">Small Rooms</span>
+              <span class="room-type-avail">6 Available</span>
+            </div>
+            <div>
+              <span class="room-type-title">Large Rooms</span>
+              <span class="room-type-avail">6 Available</span>
+            </div>
+          </div>
+
+          <div class="floor-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="floor-row" data-floor="3rd Floor" data-room="Large room">
+          <div class="floor-left">
+            <div class="floor-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h5 class="floor-name">3rd Floor</h5>
+              <span class="floor-avail">12 rooms available</span>
+            </div>
+          </div>
+
+          <div class="floor-mid">
+            <div>
+              <span class="room-type-title">Small Rooms</span>
+              <span class="room-type-avail">6 Available</span>
+            </div>
+            <div>
+              <span class="room-type-title">Large Rooms</span>
+              <span class="room-type-avail">6 Available</span>
+            </div>
+          </div>
+
+          <div class="floor-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <div class="floor-row" data-floor="4th Floor" data-room="Small room">
+          <div class="floor-left">
+            <div class="floor-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h5 class="floor-name">4th Floor</h5>
+              <span class="floor-avail">12 rooms available</span>
+            </div>
+          </div>
+
+          <div class="floor-mid">
+            <div>
+              <span class="room-type-title">Small Rooms</span>
+              <span class="room-type-avail">6 Available</span>
+            </div>
+            <div>
+              <span class="room-type-title">Large Rooms</span>
+              <span class="room-type-avail">6 Available</span>
+            </div>
+          </div>
+
+          <div class="floor-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Navigation & Modal Logic -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const sidebar = document.getElementById('sidebar');
@@ -591,11 +739,19 @@
       const appStep3 = document.getElementById('appStep3');
       const appStatusBar = document.getElementById('appStatusBar');
 
-      const btnToStep2 = document.getElementById('btnToStep2');
+      const btnOpenHostelModal = document.getElementById('btnOpenHostelModal');
       const btnToStep3 = document.getElementById('btnToStep3');
       const btnBackToDashboard = document.getElementById('btnBackToDashboard');
 
-      // Toggle Sidebar
+      // Hostel Modal Controls
+      const hostelModalBackdrop = document.getElementById('hostelModalBackdrop');
+      const modalCloseBtn = document.getElementById('modalCloseBtn');
+      const blockTabs = document.querySelectorAll('.block-tab');
+      const floorRows = document.querySelectorAll('.floor-row');
+
+      let selectedBlock = "Block 1";
+
+      // Sidebar Toggle
       sidebarToggleBtn.addEventListener('click', function () {
         if (window.innerWidth <= 768) {
           sidebar.classList.toggle('mobile-open');
@@ -610,7 +766,7 @@
         sidebarOverlay.classList.remove('active');
       });
 
-      // Navigation View Switcher logic
+      // View Switcher logic
       function switchToDashboard(e) {
         if(e) e.preventDefault();
         navApplication.classList.remove('active');
@@ -634,22 +790,57 @@
         btn.addEventListener('click', switchToApplication);
       });
 
-      // Step 1 -> Step 2
-      btnToStep2.addEventListener('click', function () {
-        appStep1.classList.remove('active');
-        appStep2.classList.add('active');
+      // Open Hostel Selection Modal from Instructions
+      btnOpenHostelModal.addEventListener('click', function () {
+        hostelModalBackdrop.classList.add('active');
+      });
 
-        stepNode1.classList.remove('active');
-        stepNode1.classList.add('completed');
-        stepNode2.classList.remove('disabled');
-        stepNode2.classList.add('active');
+      modalCloseBtn.addEventListener('click', function () {
+        hostelModalBackdrop.classList.remove('active');
+      });
+
+      // Block tab selection
+      blockTabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+          blockTabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          selectedBlock = this.getAttribute('data-block');
+        });
+      });
+
+      // Floor selection -> Updates Allocation view dynamically
+      floorRows.forEach(row => {
+        row.addEventListener('click', function () {
+          const selectedFloor = this.getAttribute('data-floor');
+          const selectedRoom = this.getAttribute('data-room');
+
+          // Update text in Step 2 Allocation Card
+          document.getElementById('displayBlock').innerText = selectedBlock;
+          document.getElementById('displayFloor').innerText = selectedFloor;
+          document.getElementById('displayRoom').innerText = selectedRoom;
+
+          // Update text in Step 3 Slip Card
+          document.getElementById('slipBlock').innerText = selectedBlock;
+          document.getElementById('slipFloor').innerText = selectedFloor;
+          document.getElementById('slipRoom').innerText = `${selectedRoom} (4-bedded)`;
+
+          // Close modal & proceed to Step 2
+          hostelModalBackdrop.classList.remove('active');
+          appStep1.classList.remove('active');
+          appStep2.classList.add('active');
+
+          stepNode1.classList.remove('active');
+          stepNode1.classList.add('completed');
+          stepNode2.classList.remove('disabled');
+          stepNode2.classList.add('active');
+        });
       });
 
       // Step 2 -> Step 3
       btnToStep3.addEventListener('click', function () {
         appStep2.classList.remove('active');
         appStep3.classList.add('active');
-        appStatusBar.style.display = 'none'; // Hide application open info bar on step 3
+        appStatusBar.style.display = 'none';
 
         stepNode2.classList.remove('active');
         stepNode2.classList.add('completed');
